@@ -1,0 +1,8 @@
+{
+  "helloUser": "Hello, user!",
+  "@helloWorld": {
+    "description": "The app welcome message"
+  },
+  "english": "English",
+  "spanish": "Spanish"
+}
