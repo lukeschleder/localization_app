@@ -18,16 +18,15 @@ class MyApp extends StatefulWidget {
 class MyAppState extends State<MyApp> {
   Locale _locale = const Locale('en');
 
-  void setLocale(Locale value) {
+  void setLocale(String selectedValue) {
     setState(() {
-      _locale = value;
+      _locale = Locale(selectedValue);
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
@@ -35,16 +34,23 @@ class MyAppState extends State<MyApp> {
       locale: _locale,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const MyHomePage(),
+      home: WelcomeScreen(locale: _locale),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key, required locale});
+  
 
   @override
   Widget build(BuildContext context) {
+    
+    void dropDownCallBack(String? selectedValue) {
+      MyApp.of(context)!
+          .setLocale(selectedValue ?? AppLocalizations.supportedLocales.first.languageCode);
+    }
+
     // This method is rerun every time setState is called
     return Scaffold(
       appBar: AppBar(
@@ -64,15 +70,22 @@ class MyHomePage extends StatelessWidget {
               'hello',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            DropdownButton(
+              items: const [
+                DropdownMenuItem(value: 'en', child: Text('English')),
+                DropdownMenuItem(value: 'es', child: Text('Spanish')),
+              ],
+              onChanged: dropDownCallBack,
+            ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => MyApp.of(context)!
-            .setLocale(const Locale.fromSubtags(languageCode: 'es')),
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () => MyApp.of(context)!
+      //       .setLocale(const Locale.fromSubtags(languageCode: 'es')),
+      //   tooltip: 'Increment',
+      //   child: const Icon(Icons.add),
+      // ),
     );
   }
 }
