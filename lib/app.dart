@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:localization_app/view/welcome_screen.dart';
 
-
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class App extends StatefulWidget {
+  const App({super.key});
 
   @override
-  State<MyApp> createState() => MyAppState();
+  State<App> createState() => AppState();
 
-  static MyAppState? of(BuildContext context) =>
-      context.findAncestorStateOfType<MyAppState>();
+  static AppState? of(BuildContext context) =>
+      context.findAncestorStateOfType<AppState>();
 }
 
-class MyAppState extends State<MyApp> {
+class AppState extends State<App> {
+  // only supported languages are english and spanish at this time
   Locale _locale = AppLocalizations.supportedLocales
       .firstWhere((element) => element.languageCode == 'en');
 
@@ -24,6 +24,7 @@ class MyAppState extends State<MyApp> {
   }
 
   @override
+  // This method is rerun every time setState is called
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,

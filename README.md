@@ -1,16 +1,19 @@
-# localization_app
+# Flutter Localization App
 
-A new Flutter project.
+Luke's Localization App for CyberNinja.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This is a simple Flutter mobile app that demonstrates some Flutter localization functionality. It is just one welcome screen with the label "Hello, user!" and a drop down with two languages - "English" and "Spanish". Switching the language will apply the selected language to the app.  
 
-A few resources to get you started if this is your first Flutter project:
+Next steps would be saving the users language preference in the device cache using SharedPreferences, Hive, or similiar tool.  This version simply defaults to English on app start.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+To create I used the flutter [docs](https://docs.flutter.dev/accessibility-and-localization/internationalization#adding-your-own-localized-messages) to implement internationalizing our own localized messages. For state management I used the simple but effective setState method paired with a Stateful class. If more complexity was desired we could also implement with GetX or BLOC pattern.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Running locally
+
+Simply clone this public repository and run with your choice of IDE on an emulator or simulator.
+
+![Dropdown closed in English](assets/dropdown_closed_english.png)
+
+![Dropdown open in Spanish](assets/dropdown_closed_english.png)

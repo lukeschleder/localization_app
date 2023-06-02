@@ -6,14 +6,7 @@ class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key, required locale});
 
   @override
-  // This method is rerun every time setState is called
   Widget build(BuildContext context) {
-    void dropDownCallBack(Locale? selectedLocale) {
-      MyApp.of(context)!.setLocale(selectedLocale ??
-          AppLocalizations.supportedLocales
-              .firstWhere((element) => element.languageCode == 'es'));
-    }
-
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
@@ -47,7 +40,11 @@ class WelcomeScreen extends StatelessWidget {
                                     : AppLocalizations.of(context)!.spanish)),
                           ))
                       .toList(),
-                  onChanged: dropDownCallBack,
+                  // on change we trigger [setLocale] function in parent [AppState] class
+                  onChanged: (Locale? selectedLocale) => App.of(context)!
+                      .setLocale(selectedLocale ??
+                          AppLocalizations.supportedLocales.firstWhere(
+                              (element) => element.languageCode == 'en')),
                 ),
               ),
             ),
@@ -58,6 +55,7 @@ class WelcomeScreen extends StatelessWidget {
   }
 }
 
+// making UI widgets their own class(vs returning Widget functions) improves performance
 class Background extends StatelessWidget {
   const Background({Key? key}) : super(key: key);
   @override
