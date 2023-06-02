@@ -16,4 +16,4 @@ Simply clone this public repository and run with your choice of IDE on an emulat
 
 ![Dropdown closed in English](assets/dropdown_closed_english.png)
 
-![Dropdown open in Spanish](assets/dropdown_closed_english.png)
+![Dropdown open in Spanish](assets/dropdown_open_spanish.png)
