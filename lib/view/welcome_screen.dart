@@ -13,40 +13,13 @@ class WelcomeScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         title: Text(AppLocalizations.of(context)!.helloUser),
       ),
-      body: Stack(
+      body: const Stack(
         children: [
-          const Background(),
+          Background(),
           Center(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 48),
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(width: 2, color: Colors.black54),
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: DropdownButton(
-                  underline: const SizedBox.shrink(),
-                  isExpanded: true,
-                  items: AppLocalizations.supportedLocales
-                      .map<DropdownMenuItem<Locale>>((Locale item) =>
-                          DropdownMenuItem<Locale>(
-                            value: item,
-                            child: Center(
-                                child: Text(item.languageCode == 'en'
-                                    ? AppLocalizations.of(context)!.english
-                                    : AppLocalizations.of(context)!.spanish)),
-                          ))
-                      .toList(),
-                  // on change we trigger [setLocale] function in parent [AppState] class
-                  onChanged: (Locale? selectedLocale) => App.of(context)!
-                      .setLocale(selectedLocale ??
-                          AppLocalizations.supportedLocales.firstWhere(
-                              (element) => element.languageCode == 'en')),
-                ),
-              ),
+              padding: EdgeInsets.symmetric(horizontal: 48),
+              child: DropDown(),
             ),
           ),
         ],
@@ -56,6 +29,40 @@ class WelcomeScreen extends StatelessWidget {
 }
 
 // making UI widgets their own class(vs returning Widget functions) improves performance
+class DropDown extends StatelessWidget {
+  const DropDown({Key? key}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        border: Border.all(width: 2, color: Colors.black54),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: DropdownButton(
+        underline: const SizedBox.shrink(),
+        isExpanded: true,
+        items: AppLocalizations.supportedLocales
+            .map<DropdownMenuItem<Locale>>(
+                (Locale item) => DropdownMenuItem<Locale>(
+                      value: item,
+                      child: Center(
+                          child: Text(item.languageCode == 'en'
+                              ? AppLocalizations.of(context)!.english
+                              : AppLocalizations.of(context)!.spanish)),
+                    ))
+            .toList(),
+        // on change we trigger [setLocale] function in parent [AppState] class
+        onChanged: (Locale? selectedLocale) => App.of(context)!.setLocale(
+            selectedLocale ??
+                AppLocalizations.supportedLocales
+                    .firstWhere((element) => element.languageCode == 'en')),
+      ),
+    );
+  }
+}
+
 class Background extends StatelessWidget {
   const Background({Key? key}) : super(key: key);
   @override
@@ -67,7 +74,7 @@ class Background extends StatelessWidget {
           end: Alignment.bottomCenter,
           colors: [
             Colors.white,
-            Colors.grey,
+            Colors.lightBlueAccent,
           ],
         ),
       ),

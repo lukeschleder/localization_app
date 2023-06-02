@@ -14,6 +14,6 @@ To create I used the flutter [docs](https://docs.flutter.dev/accessibility-and-l
 
 Simply clone this public repository and run with your choice of IDE on an emulator or simulator.
 
-![Dropdown closed in English](assets/dropdown_closed_english.png)
+![Dropdown closed in English](assets/dropdown_closed.png)
 
-![Dropdown open in Spanish](assets/dropdown_open_spanish.png)
+![Dropdown open in Spanish](assets/dropdown_open.png)
