@@ -3,7 +3,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:localization_app/app.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  const WelcomeScreen({super.key, required locale});
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

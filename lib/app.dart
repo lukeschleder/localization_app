@@ -35,7 +35,7 @@ class AppState extends State<App> {
       locale: _locale,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: WelcomeScreen(locale: _locale),
+      home: const WelcomeScreen(),
     );
   }
 }
