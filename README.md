@@ -1,6 +1,6 @@
 # Flutter Localization App
 
-Luke's Localization App for CyberNinja.
+Luke's Localization App.
 
 ## Getting Started
 
